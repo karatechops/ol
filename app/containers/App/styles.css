@@ -1,0 +1,55 @@
+@import 'https://fonts.googleapis.com/css?family=Lora:400|Open+Sans:400,700';
+
+body {
+	width: 100%;
+	height: 100%;
+	background-color: #f0f0f0;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Lora';
+}
+
+header {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	
+	.logo {
+		max-height: 53px;
+		width: auto;
+		max-width: 100%;
+	}
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #0f0f0f;
+	opacity: 1;
+	transition: all 0.25s ease-out;
+	text-decoration: none;
+
+	&:hover {
+		opacity: .6;
+		text-decoration: underline;
+	}
+}
+
+.container {
+	min-height: 100vh;
+	font-family: 'Open Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+.content {
+	padding: 20px;
+}
