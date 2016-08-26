@@ -14,7 +14,8 @@ export class index extends React.Component {
 
   render() {
     return (
-      <div></div>
+      <div class="map-container">
+      </div>
     )
   }
 }
