@@ -22,6 +22,9 @@ export function fetchList(page, direction = null) {
     dispatch(listRequest(page))
     return fetch(`http://ec2-54-84-251-148.compute-1.amazonaws.com/businesses?per_page=10&page=${page}`)
       .then(response => response.json())
+      .then(json => {
+        augmentItemsWithGeo(json.businesses)
+      })
       .then(json => dispatch(listRequestSuccess(page, direction, json)))
       .catch(error => dispatch({ // eslint-disable-line no-unused-vars
         type: LIST_ERROR,
@@ -53,6 +56,7 @@ export function fetchItem(id) {
     return fetch(`http://ec2-54-84-251-148.compute-1.amazonaws.com/businesses/${id}`)
       .then(response => response.json())
       .then(json => dispatch(itemRequestSuccess(id, json)))
+      //.then(json.items => augmentItemWithGeo(json.items))
       .catch(error => dispatch({ // eslint-disable-line no-unused-vars
         type: ITEM_ERROR,
         error: 'Error retrieving business.',
@@ -70,6 +74,7 @@ export function resetErrorMessage() {
 }
 
 export function augmentItemsWithGeo(items) {
+  console.log('items:', items);
   var geoCodeUrlTemplate = 'http://maps.googleapis.com/maps/api/geocode/json?address=';
   return Promise.all(items.map(augmentItemWithGeo));
 

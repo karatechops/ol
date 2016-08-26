@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
-import { fetchList } from 'actions'
+import { fetchList, augmentItemsWithGeo } from 'actions'
 
 import Map from '../Map';
 
@@ -24,6 +24,7 @@ export class BusinessListPage extends Component {
       ? this.props.params.page
       : 1
     this.props.dispatch(fetchList(page))
+      //.then(augmentItemsWithGeo(this.props.items))
   }
 
   onNextClick() {
@@ -50,7 +51,9 @@ export class BusinessListPage extends Component {
 
     return (
       <div>
-        <Map />
+        <div>
+          <Map />
+        </div>
         <div>
           {list}
         </div>
