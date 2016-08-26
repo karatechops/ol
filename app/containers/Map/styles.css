@@ -1,4 +1,6 @@
 
-.map-container {
-
+.mapContainer {
+    width:100%; height:40vh;
+    background-color: red;
+    margin-bottom: 1em;
 }

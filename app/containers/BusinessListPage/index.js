@@ -50,9 +50,7 @@ export class BusinessListPage extends Component {
 
     return (
       <div>
-        <div>
-          <Map />
-        </div>
+        <Map />
         <div>
           {list}
         </div>
