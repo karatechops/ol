@@ -74,9 +74,12 @@ export function resetErrorMessage() {
 }
 
 export function augmentItemsWithGeo(items) {
-  console.log('items:', items);
+  console.log('Vanilla items:', items);
   var geoCodeUrlTemplate = 'http://maps.googleapis.com/maps/api/geocode/json?address=';
-  return Promise.all(items.map(augmentItemWithGeo));
+  return Promise
+    .all(items.map(augmentItemWithGeo))
+    .then(function(moreItems) { console.log('Geo-augmented items:', moreItems); return moreItems})
+  ;
 
   function augmentItemWithGeo(item) {
     return fetch(geoCodeUrlTemplate + item.zip) // TODO: is it .zip or .zipcode or what?
