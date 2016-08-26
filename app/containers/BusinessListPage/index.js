@@ -4,6 +4,8 @@ import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { fetchList } from 'actions'
 
+import Map from '../Map';
+
 import List from 'components/List'
 import Button from 'components/Button'
 import Loading from 'components/Loading'
@@ -48,6 +50,9 @@ export class BusinessListPage extends Component {
 
     return (
       <div>
+        <div>
+          <Map />
+        </div>
         <div>
           {list}
         </div>
