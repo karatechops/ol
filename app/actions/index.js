@@ -68,3 +68,19 @@ export function resetErrorMessage() {
     type: RESET_ERROR_MESSAGE,
   }
 }
+
+export function augmentItemsWithGeo(items) {
+  var geoCodeUrlTemplate = 'http://maps.googleapis.com/maps/api/geocode/json?address=';
+  return Promise.all(items.map(augmentItemWithGeo));
+
+  function augmentItemWithGeo(item) {
+    return fetch(geoCodeUrlTemplate + item.zip) // TODO: is it .zip or .zipcode or what?
+      .then(response => response.json())
+      .then(responseJson => responseJson.results[0].geometry.location)
+      .then(location => Object.assign({}, item, {geo:location}))
+      //.catch(error => dispatch({ // eslint-disable-line no-unused-vars
+      //  type: ITEM_ERROR,
+      //  error: 'Error retrieving business.',
+      //}))
+  }
+}
